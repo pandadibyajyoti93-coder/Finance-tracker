@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expense & Income Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Expense & Income Tracker</h1>
+  <div class="currency-toggle">
+    <label>Currency: 
+      <select id="currency">
+        <option value="₹">₹</option>
+        <option value="$">$</option>
+      </select>
+    </label>
+  </div>
+</header>
+
+<main>
+  <!-- Month/Year Filter -->
+  <section id="filters">
+    <label>Month: <input type="month" id="filter-month"></label>
+    <button onclick="updateAll();">Apply Filter</button>
+  </section>
+
+  <!-- EXPENSE SECTION -->
+  <section id="expense-section">
+    <h2>Expenses</h2>
+    <div class="category-manager">
+      <input type="text" id="new-expense-category" placeholder="New category">
+      <button onclick="addCategory('expense')">Add Category</button>
+    </div>
+    <div class="category-list" id="expense-category-list"></div>
+    <div class="entry-form">
+      <input type="date" id="expense-date">
+      <select id="expense-category"></select>
+      <input type="number" id="expense-amount" placeholder="Amount">
+      <button onclick="addEntry('expense')">Add Expense</button>
+    </div>
+    <table id="expense-table">
+      <thead><tr><th>Date</th><th>Category</th><th>Amount</th><th>Action</th></tr></thead>
+      <tbody></tbody>
+      <tfoot><tr><td colspan="2">Total</td><td id="expense-total">₹0</td><td></td></tr></tfoot>
+    </table>
+    <canvas id="expense-chart" width="400" height="300"></canvas>
+  </section>
+
+  <!-- INCOME SECTION -->
+  <section id="income-section">
+    <h2>Income</h2>
+    <div class="category-manager">
+      <input type="text" id="new-income-category" placeholder="New category">
+      <button onclick="addCategory('income')">Add Category</button>
+    </div>
+    <div class="category-list" id="income-category-list"></div>
+    <div class="entry-form">
+      <input type="date" id="income-date">
+      <select id="income-category"></select>
+      <input type="number" id="income-amount" placeholder="Amount">
+      <button onclick="addEntry('income')">Add Income</button>
+    </div>
+    <table id="income-table">
+      <thead><tr><th>Date</th><th>Category</th><th>Amount</th><th>Action</th></tr></thead>
+      <tbody></tbody>
+      <tfoot><tr><td colspan="2">Total</td><td id="income-total">₹0</td><td></td></tr></tfoot>
+    </table>
+    <canvas id="income-chart" width="400" height="300"></canvas>
+  </section>
+
+  <button id="export-btn">Export to PDF</button>
+</main>
+
+<!-- CDNs -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
